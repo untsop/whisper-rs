@@ -30,7 +30,7 @@ impl WhisperInnerContext {
     ) -> Result<Self, WhisperError> {
         let path_cstr = CString::new(path)?;
         let ctx = unsafe {
-            whisper_rs_sys::whisper_init_from_file_with_params_no_state(
+            whisper_rs_sys::whisper_init_from_file_with_params(
                 path_cstr.as_ptr(),
                 parameters.to_c_struct(),
             )
