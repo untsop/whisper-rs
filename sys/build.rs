@@ -162,7 +162,6 @@ fn main() {
     if cfg!(feature = "coreml") {
         config.define("WHISPER_COREML", "ON");
         config.define("WHISPER_COREML_ALLOW_FALLBACK", "ON");
-        add_link_search_path(&out.join("build/src")).unwrap();
     }
 
     if cfg!(feature = "cuda") {
@@ -234,6 +233,7 @@ fn main() {
     let destination = config.build();
 
     add_link_search_path(&out.join("lib")).unwrap();
+    add_link_search_path(&out.join("build/src")).unwrap();
 
     println!("cargo:rustc-link-search=native={}", destination.display());
     println!("cargo:rustc-link-lib=static=whisper");
