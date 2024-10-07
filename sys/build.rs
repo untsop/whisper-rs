@@ -161,7 +161,8 @@ fn main() {
 
     if cfg!(feature = "coreml") {
         config.define("WHISPER_COREML", "ON");
-        config.define("WHISPER_COREML_ALLOW_FALLBACK", "1");
+        config.define("WHISPER_COREML_ALLOW_FALLBACK", "ON");
+        add_link_search_path(&out.join("build/src")).unwrap();
     }
 
     if cfg!(feature = "cuda") {
